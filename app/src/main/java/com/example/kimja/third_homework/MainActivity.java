@@ -1,6 +1,9 @@
 package com.example.kimja.third_homework;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     TextView textView;
     ImageView imageView;
+    Bitmap bitmap;
+    int count = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = (LinearLayout)findViewById(R.id.linearLayout);
         textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.imageView2);
+
+
+
 
 
 
@@ -55,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 linearLayout.setBackgroundColor(Color.YELLOW);
                 break;
             case R.id.turn30:
-
+                if(count==12) count = 0;
+                imageView.setRotation(30*count);
+                count++;
                 break;
             case R.id.showbtn:
                 if (item.isChecked()){
@@ -83,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     textView.setText("겁나 맛있는 치킨");
                     imageView.setVisibility(View.VISIBLE);
+                    imageView.setRotation(0);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.chiken));
                     item.setChecked(true);
                 }
@@ -93,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     textView.setText("새콤한 스파게티");
                     imageView.setVisibility(View.VISIBLE);
+                    imageView.setRotation(0);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.spa));
                     item.setChecked(true);
                 }
@@ -100,4 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
