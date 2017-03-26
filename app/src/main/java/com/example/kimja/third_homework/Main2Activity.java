@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
     TabHost tabHost;
-    Button b1;
-    EditText editText1,editText2;
-    TextView resultBMI;
+    Button b1 ,b2 ,b3;
+    EditText editText1,editText2, inputAREA;
+    TextView resultBMI ,resultAREA ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +22,19 @@ public class Main2Activity extends AppCompatActivity {
         init();
     }
     void  init(){
+        tabHost = (TabHost)findViewById(R.id.tabHost);
+        tabHost.setup();
+
         b1 = (Button)findViewById(R.id.b1);
         editText1 = (EditText)findViewById(R.id.editText1);
         editText2 = (EditText)findViewById(R.id.editText2);
         resultBMI = (TextView)findViewById(R.id.resultBMI);
-        tabHost = (TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
+
+        b2 = (Button)findViewById(R.id.b2);
+        b3 = (Button)findViewById(R.id.b3);
+        inputAREA = (EditText)findViewById(R.id.inputAREA);
+        resultAREA = (TextView)findViewById(R.id.resultAREA);
+
 
         TabHost.TabSpec spec = tabHost.newTabSpec("Tab One");
         spec.setContent(R.id.tab1);
@@ -59,6 +66,29 @@ public class Main2Activity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String area = inputAREA.getText().toString();
+                double AREAresult;
+                AREAresult = (Double.parseDouble(area)*3.305785);
+                double result = Math.round(AREAresult*1000d) / 1000d;
+                resultAREA.setText(" "+result + " 제곱미터");
+
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String area = inputAREA.getText().toString();
+                double AREAresult;
+                AREAresult = (Double.parseDouble(area)*0.3025);
+                double result = Math.round(AREAresult*100d) / 100d;
+                resultAREA.setText(" "+ result + " 평");
             }
         });
     }
