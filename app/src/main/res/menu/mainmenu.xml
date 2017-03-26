@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="치킨과 스파게티"
+        android:id="@+id/chickandspa">
+
+    </item>
+    <item android:title="각종 계산기"
+        android:id="@+id/calculator"
+        />
+</menu>
